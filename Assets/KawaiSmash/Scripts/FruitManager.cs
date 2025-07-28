@@ -155,10 +155,13 @@ public class FruitManager : MonoBehaviour
 
     private Vector2 GetSpawnPosition()
     {
-        Vector2 WorldClickedPosition = GetClickedWorldPosition();
-        WorldClickedPosition.y = spawnPathYPosition;
-        return WorldClickedPosition;
-        //Because of this Click position is getting locked at a certain height on Y axis
+        Vector2 worldClickedPosition = GetClickedWorldPosition();
+
+        // Offset spawn position slightly *below* the line
+        float yOffset = -0.5f; // adjust as needed
+        worldClickedPosition.y = spawnPathYPosition + yOffset;
+
+        return worldClickedPosition;
     }
 
     #endregion
@@ -232,4 +235,16 @@ public class FruitManager : MonoBehaviour
 #endif
 
     #endregion
+    
+    private bool HasFruitReachedSpawnLine()
+    {
+        foreach (Transform fruit in fruitsParent)
+        {
+            if (fruit.position.y >= spawnPathYPosition)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
 }
