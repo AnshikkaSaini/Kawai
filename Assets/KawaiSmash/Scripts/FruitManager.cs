@@ -32,15 +32,13 @@ public class FruitManager : MonoBehaviour
 
     [Header("Debug")]
     [SerializeField] private bool enableGizmos;
-   
-
     #endregion
 
     #region Unity Callbacks
 
     private void Awake()
     {
-        MergeManager.onMergeProcessed += MergeProcessCallback;
+        MergeManager.OnMergeProcessed += MergeProcessCallback;
     }
 
     void Start()
@@ -146,6 +144,11 @@ public class FruitManager : MonoBehaviour
         return spawnableFruits[nextFruitIndex].name;
     }
 
+    public Sprite GetNextFruitSprite()
+    {
+        return spawnableFruits[nextFruitIndex].GetSprite();
+
+    }
 
     private Vector2 GetClickedWorldPosition()
     {
@@ -242,6 +245,7 @@ public class FruitManager : MonoBehaviour
         {
             if (fruit.position.y >= spawnPathYPosition)
             {
+                Debug.Log("Line Reached");
                 return true;
             }
         }

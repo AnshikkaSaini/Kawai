@@ -6,7 +6,8 @@ using System;
 public class MergeManager : MonoBehaviour
 {
     [Header("Action")] 
-    public static Action<FruitType, Vector2> onMergeProcessed;
+    public static Action<FruitType, Vector2> OnMergeProcessed;
+    
     [Header("Settings")]
     private Fruit lastSender;
     void Start()
@@ -36,7 +37,7 @@ public class MergeManager : MonoBehaviour
 
         StartCoroutine(ResetLastSenderCoroutine());
         
-        onMergeProcessed?.Invoke(MergeFruitType, fruitSpawnPos);
+        OnMergeProcessed?.Invoke(MergeFruitType, fruitSpawnPos);
     }
 
     IEnumerator ResetLastSenderCoroutine()
