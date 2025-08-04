@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,13 +17,20 @@ public class FruitManagerUI : MonoBehaviour
     private FruitManager _fruitManager;
     void Start()
     {
-        _fruitManager = GetComponent<FruitManager>();
+        //_fruitManager = GetComponent<FruitManager>();
     }
 
-  
-    void Update()
+
+    private void Awake()
     {
-        nextFruitText.text = _fruitManager.GetNextFruitName();
+        FruitManager.onNextFruitIndexSet += UpdateNextFruitImage;
+    } 
+
+
+    private void UpdateNextFruitImage()
+    {
+        if (_fruitManager == null)
+            _fruitManager = GetComponent<FruitManager>();
         _nextFruitImage.sprite = _fruitManager.GetNextFruitSprite();
     }
 }

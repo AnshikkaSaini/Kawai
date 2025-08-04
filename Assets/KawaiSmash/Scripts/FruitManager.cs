@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
+using System;
 
 //using Random = System.Random;
 
@@ -32,6 +33,12 @@ public class FruitManager : MonoBehaviour
 
     [Header("Debug")]
     [SerializeField] private bool enableGizmos;
+
+    [Header("Action")] public static Action onNextFruitIndexSet;
+    
+    
+    
+    
     #endregion
 
     #region Unity Callbacks
@@ -137,6 +144,7 @@ public class FruitManager : MonoBehaviour
     private void SetNextFruitsIndex()
     {
         nextFruitIndex = Random.Range(0, spawnableFruits.Length); 
+        onNextFruitIndexSet?.Invoke();
     }
 
     public string GetNextFruitName()
@@ -173,8 +181,12 @@ public class FruitManager : MonoBehaviour
 
     private void PlaceLineAtClickedPosition()
     {
-        fruitIndicatorLine.SetPosition(0, GetSpawnPosition());
-        fruitIndicatorLine.SetPosition(1, GetSpawnPosition() + Vector2.down * 50);
+            Vector2 spawnPos = GetSpawnPosition();
+
+            spawnPos = new Vector2(spawnPos.x, spawnPos.y + 0.5f);
+            fruitIndicatorLine.SetPosition(0, spawnPos);
+            fruitIndicatorLine.SetPosition(1, spawnPos + Vector2.down * 50);
+        
     }
 
     private void HideLine()

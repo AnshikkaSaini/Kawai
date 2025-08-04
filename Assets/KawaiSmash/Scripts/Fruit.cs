@@ -11,11 +11,10 @@ public class Fruit : MonoBehaviour
     [Header("Elements")] [SerializeField] 
     private SpriteRenderer _spriteRenderer;
     
-    
-    [Header("Data")] 
-    [FormerlySerializedAs("TypeOfFruit")]
     [Header("Data")]
     [SerializeField] private FruitType typeOfFruit;
+
+    private bool hasCollided;
 
     [Header("Actions")] 
     public static Action<Fruit,Fruit> onCollisionWithFruit;
@@ -33,6 +32,7 @@ public class Fruit : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        hasCollided = true;
         if (collision.collider.TryGetComponent(out Fruit otherFruit))
         {
             if (otherFruit.GetFruitType() != typeOfFruit)
@@ -53,6 +53,11 @@ public class Fruit : MonoBehaviour
     public Sprite GetSprite()
     {
         return _spriteRenderer.sprite;
+    }
+
+    public bool FruitCollided()
+    {
+        return hasCollided;
     }
 
 }
