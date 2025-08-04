@@ -8,39 +8,100 @@ public class GameOverManager : MonoBehaviour
     [SerializeField] private GameObject deadline;
 
     [SerializeField] private Transform fruitsParent;
-    void Start()
-    {
-        
-    }
 
-
+    [Header("Timer")] 
+    [SerializeField] private float durationThreshold;
+    private float timer;
+    private bool timerOn;
+    private bool isGameOver;
+    
+    
     void Update()
     {
-        CheckForGameOver(); 
+
+        if (!isGameOver)
+        {
+            ManageGameOver();
+        }
+
         
     }
 
-    private void CheckForGameOver()
+    private void ManageGameOver()
+    {
+        if (timerOn)
+        {
+            ManageTimerOn();
+        }
+        else
+        {
+            if (IsFruitAboveLine())
+            {
+                StartTimer();
+            }
+        }
+    }
+
+    private void ManageTimerOn()
+    {
+        timer += Time.deltaTime;
+ 
+
+        if (!IsFruitAboveLine())
+        {
+            StopTimer();
+        }
+
+        if (timer >= durationThreshold)
+        {
+            GameOver();
+        }
+    }
+
+    private bool IsFruitAboveLine()
     {
         for (int i = 0; i < fruitsParent.childCount; i++)
         {
             Fruit fruit = fruitsParent.GetChild(i).GetComponent<Fruit>();
-            
+
             if (!fruit.FruitCollided())
             {
                 continue;
             }
 
-            CheckIfFruitAboveDeadLine(fruitsParent.GetChild(i));
+            if (IsFruitAboveLine(fruitsParent.GetChild(i)))
+            {
+                return true;
+            }
         }
+        return false;
     }
-
-    private void CheckIfFruitAboveDeadLine(Transform fruit)
+    
+    private bool IsFruitAboveLine(Transform fruit)
     {
         if (fruit.position.y > deadline.transform.position.y)
         {
-            Debug.Log("Game Over");
+            return true;
         }
+
+        return false;
+    }
+
+    private void StartTimer()
+    {
+        timer = 0;
+        timerOn = true;
+    }
+    private void StopTimer()
+    {
+        timerOn = false;
+        timer = 0;
+    }
+
+    private void GameOver()
+    {
+        Debug.LogError("Game Over");
+        isGameOver = true;
     }
 
 }
