@@ -9,22 +9,18 @@ using UnityEngine.UI;
 
 public class FruitManagerUI : MonoBehaviour
 {
-    [Header("Elements")]
-    [SerializeField] private TextMeshProUGUI nextFruitText;
-
     [SerializeField] private Image _nextFruitImage;
 
     private FruitManager _fruitManager;
-    void Start()
-    {
-        //_fruitManager = GetComponent<FruitManager>();
-    }
-
-
+    
     private void Awake()
     {
         FruitManager.onNextFruitIndexSet += UpdateNextFruitImage;
     } 
+    private void OnDestroy()
+    {
+        FruitManager.onNextFruitIndexSet -= UpdateNextFruitImage;
+    }
 
 
     private void UpdateNextFruitImage()

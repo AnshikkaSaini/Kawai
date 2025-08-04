@@ -14,10 +14,22 @@ public class Fruit : MonoBehaviour
     [Header("Data")]
     [SerializeField] private FruitType typeOfFruit;
 
+    private bool canBeMerged;
+
     private bool hasCollided;
 
     [Header("Actions")] 
     public static Action<Fruit,Fruit> onCollisionWithFruit;
+
+    private void Start()
+    {
+        Invoke("AllowMerge", .25f);
+    }
+
+    private void AllowMerge()
+    {
+        canBeMerged = true;
+    }
 
     public void EnablePhysics()
     {
@@ -31,11 +43,30 @@ public class Fruit : MonoBehaviour
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
+    {    
+        ManageCollision(collision);
+    }
+
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        ManageCollision(collision);
+    }
+
+    private void ManageCollision( Collision2D collision)
     {
         hasCollided = true;
+        
+        if (!canBeMerged)
+        {
+            return;
+        }
         if (collision.collider.TryGetComponent(out Fruit otherFruit))
         {
             if (otherFruit.GetFruitType() != typeOfFruit)
+            {
+                return;
+            }
+            else if (!otherFruit.canBeMerged)
             {
                 return;
             }
@@ -45,6 +76,7 @@ public class Fruit : MonoBehaviour
             }
         }
     }
+
     public FruitType GetFruitType()
     {
         return typeOfFruit;
@@ -58,6 +90,11 @@ public class Fruit : MonoBehaviour
     public bool FruitCollided()
     {
         return hasCollided;
+    }
+
+    public bool CanbeMerged()
+    {
+        return canBeMerged;
     }
 
 }
