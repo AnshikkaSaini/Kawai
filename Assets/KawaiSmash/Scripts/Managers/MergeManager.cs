@@ -10,9 +10,14 @@ public class MergeManager : MonoBehaviour
     
     [Header("Settings")]
     private Fruit lastSender;
-    void Start()
+    
+    void Awake()
     {
         Fruit.onCollisionWithFruit += CollisionBetweenFruitsCallback;
+    }
+    void OnDestroy()
+    {
+        Fruit.onCollisionWithFruit -= CollisionBetweenFruitsCallback;
     }
     
     private void CollisionBetweenFruitsCallback(Fruit sender, Fruit otherFruit)
