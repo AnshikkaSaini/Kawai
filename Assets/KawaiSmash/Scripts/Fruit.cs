@@ -20,6 +20,9 @@ public class Fruit : MonoBehaviour
 
     [Header("Actions")] 
     public static Action<Fruit,Fruit> onCollisionWithFruit;
+    
+
+    [Header("Effects")] [SerializeField] private ParticleSystem mergeParticles;
 
     private void Start()
     {
@@ -75,6 +78,17 @@ public class Fruit : MonoBehaviour
                 onCollisionWithFruit?.Invoke(this,otherFruit);   //subscribing to the event when same fruits collide
             }
         }
+    }
+
+    public void Merge()
+    {
+        if (mergeParticles != null)
+        {
+        mergeParticles.transform.SetParent(null);
+        mergeParticles.Play();
+        }
+
+        Destroy(gameObject);
     }
 
     public FruitType GetFruitType()
