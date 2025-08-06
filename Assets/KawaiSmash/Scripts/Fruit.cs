@@ -80,16 +80,23 @@ public class Fruit : MonoBehaviour
         }
     }
 
-    public void Merge()
+  public void Merge()
+{
+    if (mergeParticles != null)
     {
-        if (mergeParticles != null)
-        {
         mergeParticles.transform.SetParent(null);
         mergeParticles.Play();
-        }
-
-        Destroy(gameObject);
+        StartCoroutine(DestroyParticlesAfterPlay(mergeParticles));
     }
+
+    Destroy(gameObject);
+}
+
+private IEnumerator DestroyParticlesAfterPlay(ParticleSystem particles)
+{
+    yield return new WaitWhile(() => particles.isPlaying);
+    Destroy(particles.gameObject);
+}
 
     public FruitType GetFruitType()
     {
