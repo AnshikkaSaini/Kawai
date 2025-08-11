@@ -27,13 +27,7 @@ public class GameManager : MonoBehaviour
     {
         SetMenu();
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+    
     private void SetMenu()
     {
     

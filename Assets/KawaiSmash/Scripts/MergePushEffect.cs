@@ -7,15 +7,18 @@ public class MergePushEffect : MonoBehaviour
 {
     [SerializeField] private bool enableGizmos;
     [SerializeField] private float pushRadius;
+    [SerializeField] private Vector2 minMaxPushMagnitude;
     [SerializeField] private float pushMagnitude;
     private Vector2 pushPosition; 
     private void Awake()
     {
         MergeManager.OnMergeProcessed += MergeProcessCallback;
+        SettingsManager.onPushmagnitudeSliderChange += PushMagnitudeChangeCallback;
     }
     private void OnDestroy()
     {
         MergeManager.OnMergeProcessed -= MergeProcessCallback;
+        SettingsManager.onPushmagnitudeSliderChange -= PushMagnitudeChangeCallback;
     }
 
     private void MergeProcessCallback(FruitType fruitType, Vector2 mergePos)
@@ -37,7 +40,12 @@ public class MergePushEffect : MonoBehaviour
         }
     }
 
-   
+    private void PushMagnitudeChangeCallback(float newPushMagnitude)
+    {
+        pushMagnitude = Mathf.Lerp(minMaxPushMagnitude.x, minMaxPushMagnitude.y, newPushMagnitude);
+    }
+
+
 #if UNITY_EDITOR
     private void OnDrawGizmos()
     {

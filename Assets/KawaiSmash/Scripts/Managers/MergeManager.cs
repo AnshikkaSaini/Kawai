@@ -10,6 +10,8 @@ public class MergeManager : MonoBehaviour
     
     [Header("Settings")]
     private Fruit lastSender;
+    private bool gameStarted = false;
+
     
     void Awake()
     {
@@ -19,14 +21,27 @@ public class MergeManager : MonoBehaviour
     {
         Fruit.onCollisionWithFruit -= CollisionBetweenFruitsCallback;
     }
+    private void Start()
+    {
+        StartCoroutine(EnableMergingAfterDelay());
+    }
+
+    private IEnumerator EnableMergingAfterDelay()
+    {
+        yield return new WaitForSeconds(0.5f); // wait half a second
+        gameStarted = true;
+    }
     
     private void CollisionBetweenFruitsCallback(Fruit sender, Fruit otherFruit)
     {
+        if (!gameStarted) return;
         if (lastSender != null)
             return;
         lastSender = sender;
         ProcessMerge(sender, otherFruit);
         Debug.Log("Collision Dectected" + sender.name);
+        
+        
     }
     
     private void ProcessMerge( Fruit sender, Fruit otherFruit)
