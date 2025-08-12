@@ -4,15 +4,16 @@ using UnityEngine;
 
 public enum FruitType
    {
-      Orange,
-      StrawBerry,
-      Blueberry,
-      Kiwi,
-      Peach,
-      Apple,
-      Coconut,
-      Papaya,
-      Watermelon
+     Blueberry,
+     Strawberry ,
+     Kiwi ,
+     Peach ,
+     Orange ,
+     Apple ,
+     Coconut,
+     Papaya ,
+     Watermelon ,
+     
    }
 
 public enum GameState

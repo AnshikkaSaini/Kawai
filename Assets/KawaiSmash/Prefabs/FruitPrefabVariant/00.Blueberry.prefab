@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -755090082405493581, guid: cf5258fd28e8f0446b037d6167cc8dc9, type: 3}
       propertyPath: typeOfFruit
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4185073539837422580, guid: cf5258fd28e8f0446b037d6167cc8dc9, type: 3}
       propertyPath: m_Sprite
@@ -82,7 +82,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8656703326593778394, guid: cf5258fd28e8f0446b037d6167cc8dc9, type: 3}
       propertyPath: m_Name
-      value: 02.Blueberry
+      value: 00.Blueberry
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

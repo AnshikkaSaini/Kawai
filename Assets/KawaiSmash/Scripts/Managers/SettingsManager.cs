@@ -19,7 +19,7 @@ public class SettingsManager : MonoBehaviour
     private const string sfxActiveKey = "sfxActiveKey";
     private bool canSave;
 
-    [Header("Action")] 
+
     public static Action<float> onPushmagnitudeSliderChange;
     public static Action<bool> onSFX_ValueChanged;
 
@@ -27,6 +27,8 @@ public class SettingsManager : MonoBehaviour
     {
         LoadData();
     }
+    //HelloWorld@123
+    //
 
     private IEnumerator Start()
     {
