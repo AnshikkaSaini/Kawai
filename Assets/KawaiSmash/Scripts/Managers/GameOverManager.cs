@@ -24,8 +24,6 @@ public class GameOverManager : MonoBehaviour
         {
             ManageGameOver();
         }
-
-        
     }
 
     private void ManageGameOver()
@@ -65,10 +63,13 @@ public class GameOverManager : MonoBehaviour
         {
             Fruit fruit = fruitsParent.GetChild(i).GetComponent<Fruit>();
 
-            if (!fruit.FruitCollided())
+            if (!fruit.HasCollided())
             {
                 continue;
             }
+            Rigidbody2D rb = fruitsParent.GetChild(i).GetComponent<Rigidbody2D>();
+            if (rb != null && rb.velocity.magnitude > 0.05f)
+                continue; // still moving, ignore
 
             if (IsFruitAboveLine(fruitsParent.GetChild(i)))
             {
@@ -106,6 +107,6 @@ public class GameOverManager : MonoBehaviour
         GameManager.GameManagerInstance.SetGameOverState();
     }
 
-  
 
+   
 }

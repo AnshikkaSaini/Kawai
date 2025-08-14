@@ -49,29 +49,26 @@ public class DeadlineDisplay : MonoBehaviour
     {
         while (true)
         {
-            bool foundNearby = false;
+            bool foundNearbyFruit = false;
 
             for (int i = 0; i < fruitsParent.childCount; i++)
             {
-                Fruit fruitComp = fruitsParent.GetChild(i).GetComponent<Fruit>();
-                if (fruitComp == null)
-                    continue;
-
-                if (!fruitComp.FruitCollided())
-                    continue;
-
-                float distance = Mathf.Abs(fruitsParent.GetChild(i).position.y - deadLine.transform.position.y);
-
-                if (distance <= 1f)
+                if (!fruitsParent.GetChild(i).GetComponent<Fruit>().HasCollided() )
                 {
-                    foundNearby = true;
+                    continue;
+                }
+                float distance = Mathf.Abs(fruitsParent.GetChild(i).position.y - 
+                                           deadLine.transform.position.y);
+
+                if (distance <= 0.2f)
+                {
+                    ShowDeadLine();
+                    foundNearbyFruit = true;
                     break;
                 }
             }
 
-            if (foundNearby)
-                ShowDeadLine();
-            else
+            if (!foundNearbyFruit)
                 HideDeadLine();
 
             yield return new WaitForSeconds(1f);

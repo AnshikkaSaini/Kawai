@@ -36,7 +36,8 @@ public class Fruit : MonoBehaviour
 
     public void EnablePhysics()
     {
-        GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;// Objects that should move and be affected by physics (gravity, forces, collisions).
+        GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
+// Objects that should move and be affected by physics (gravity, forces, collisions).
         GetComponent<Collider2D>().enabled = true;
     }
 
@@ -108,7 +109,7 @@ private IEnumerator DestroyParticlesAfterPlay(ParticleSystem particles)
         return _spriteRenderer.sprite;
     }
 
-    public bool FruitCollided()
+    public bool HasCollided()
     {
         return hasCollided;
     }
@@ -118,4 +119,6 @@ private IEnumerator DestroyParticlesAfterPlay(ParticleSystem particles)
         return canBeMerged;
     }
 
+
+   
 }

@@ -24,9 +24,13 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: -497831713, guid: ab5c34b66d106124d905b30ea5b626ef, type: 3}
+    - target: {fileID: 4792422489427651426, guid: 3569b9a08f76a74489dc4828dd920dc7, type: 3}
+      propertyPath: m_Constraints
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6276624570804943778, guid: 3569b9a08f76a74489dc4828dd920dc7, type: 3}
       propertyPath: m_Name
-      value: 07.Coconut
+      value: 06.Coconut
       objectReference: {fileID: 0}
     - target: {fileID: 6538281730167369163, guid: 3569b9a08f76a74489dc4828dd920dc7, type: 3}
       propertyPath: typeOfFruit

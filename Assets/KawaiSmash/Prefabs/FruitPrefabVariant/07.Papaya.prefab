@@ -74,11 +74,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2653435227075222758, guid: c2ba2e454f80aa0499f1a27aafee38da, type: 3}
       propertyPath: m_Name
-      value: 08.Papaya
+      value: 07.Papaya
       objectReference: {fileID: 0}
     - target: {fileID: 2987378705033054863, guid: c2ba2e454f80aa0499f1a27aafee38da, type: 3}
       propertyPath: typeOfFruit
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3552200263633669158, guid: c2ba2e454f80aa0499f1a27aafee38da, type: 3}
+      propertyPath: m_Constraints
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7414177049732347336, guid: c2ba2e454f80aa0499f1a27aafee38da, type: 3}
       propertyPath: m_Sprite

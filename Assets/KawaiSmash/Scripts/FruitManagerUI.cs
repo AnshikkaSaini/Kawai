@@ -29,4 +29,6 @@ public class FruitManagerUI : MonoBehaviour
             _fruitManager = GetComponent<FruitManager>();
         _nextFruitImage.sprite = _fruitManager.GetNextFruitSprite();
     }
+
+ 
 }
