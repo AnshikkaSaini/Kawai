@@ -45,10 +45,12 @@ public class FruitManager : MonoBehaviour
     private void Awake()
     {
         MergeManager.OnMergeProcessed += MergeProcessCallback;
+        ShopManager.onSkinSelected += SkinSelectedCallback;
     }
     private void OnDestroy()
     {
         MergeManager.OnMergeProcessed -= MergeProcessCallback;
+        ShopManager.onSkinSelected -= SkinSelectedCallback;
     }
 
     void Start()
@@ -74,6 +76,11 @@ public class FruitManager : MonoBehaviour
     }
 
     #endregion
+
+    private void SkinSelectedCallback(SkinDataSO skinDataSo)
+    {
+       skinData = skinDataSo ;
+    }
 
     #region Input Handling
 
@@ -242,6 +249,8 @@ public class FruitManager : MonoBehaviour
        Fruit fruitInstance =  Instantiate(fruit, spawnPosition,Quaternion.identity,fruitsParent);
         fruitInstance.EnablePhysics();
     }
+    
+
 
     
     #region Editor Gizmos

@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class SkinButton : MonoBehaviour
 {
     //Elements
+    [SerializeField] private Button button;
     [SerializeField] private Image iconImage;
     [SerializeField] private GameObject selectionOutline;
 
@@ -16,7 +17,21 @@ public class SkinButton : MonoBehaviour
         iconImage.sprite = sprite;
     }
 
-    public void Select() => selectionOutline.SetActive(true);
+    public void Select()
+    {
+        if (selectionOutline == null)
+        {
+            Debug.LogError($"{name} has no selectionOutline assigned!");
+            return;
+        }
+        selectionOutline.SetActive(true);
+    }
+
+    public Button GetButton()
+    {
+        return button;
+    }
+
     public void DeSelect() => selectionOutline.SetActive(false);
 
 }
