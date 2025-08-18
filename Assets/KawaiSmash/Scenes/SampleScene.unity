@@ -3491,7 +3491,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 998700648}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1308497904}
+        m_TargetAssemblyTypeName: ShopManager, Assembly-CSharp
+        m_MethodName: PurchaseButtonCallaback
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &998700648
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4604,6 +4616,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skinButtonPrefab: {fileID: 1629163106740737231, guid: eccbc45018bd5b24d85da88b03187f28, type: 3}
   skinButtonParent: {fileID: 595521218}
+  PurchaseButton: {fileID: 998700645}
   skinDataSos:
   - {fileID: 11400000, guid: 9247708cdd722054bb5533f92ee94ed0, type: 2}
   - {fileID: 11400000, guid: 1ea5bd8f1635013488a287a13630c7fa, type: 2}
