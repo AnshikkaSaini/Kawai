@@ -10,31 +10,31 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 512387188883219539, guid: 3569b9a08f76a74489dc4828dd920dc7, type: 3}
       propertyPath: m_Radius
-      value: 1.2929962
+      value: 0.59997785
       objectReference: {fileID: 0}
     - target: {fileID: 512387188883219539, guid: 3569b9a08f76a74489dc4828dd920dc7, type: 3}
       propertyPath: m_Offset.x
-      value: 0.012556513
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 512387188883219539, guid: 3569b9a08f76a74489dc4828dd920dc7, type: 3}
       propertyPath: m_Offset.y
-      value: 0.016627112
+      value: -0.11014491
       objectReference: {fileID: 0}
     - target: {fileID: 1526046495250633356, guid: 3569b9a08f76a74489dc4828dd920dc7, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: d096262e225a5c94daedba9857eaaf16, type: 3}
+      objectReference: {fileID: 1753818597, guid: a0d4c947989e26345b91caebb3f8f590, type: 3}
     - target: {fileID: 1526046495250633356, guid: 3569b9a08f76a74489dc4828dd920dc7, type: 3}
       propertyPath: m_Color.b
-      value: 0.34547696
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1526046495250633356, guid: 3569b9a08f76a74489dc4828dd920dc7, type: 3}
       propertyPath: m_Color.g
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1526046495250633356, guid: 3569b9a08f76a74489dc4828dd920dc7, type: 3}
       propertyPath: m_Color.r
-      value: 0.8415094
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4792422489427651426, guid: 3569b9a08f76a74489dc4828dd920dc7, type: 3}
       propertyPath: m_Constraints

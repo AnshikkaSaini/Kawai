@@ -87,18 +87,18 @@ PrefabInstance:
     - target: {fileID: 7414177049732347336, guid: c2ba2e454f80aa0499f1a27aafee38da, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: d096262e225a5c94daedba9857eaaf16, type: 3}
+      objectReference: {fileID: -1415309516, guid: a0d4c947989e26345b91caebb3f8f590, type: 3}
     - target: {fileID: 7414177049732347336, guid: c2ba2e454f80aa0499f1a27aafee38da, type: 3}
       propertyPath: m_Color.b
-      value: 0.83396226
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7414177049732347336, guid: c2ba2e454f80aa0499f1a27aafee38da, type: 3}
       propertyPath: m_Color.g
-      value: 0.46722284
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7414177049732347336, guid: c2ba2e454f80aa0499f1a27aafee38da, type: 3}
       propertyPath: m_Color.r
-      value: 0.04877888
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8418833969379459863, guid: c2ba2e454f80aa0499f1a27aafee38da, type: 3}
@@ -107,21 +107,21 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 2653435227075222758, guid: c2ba2e454f80aa0499f1a27aafee38da, type: 3}
       insertIndex: -1
-      addedObject: {fileID: -3215949931511500789}
+      addedObject: {fileID: 8780027040279355878}
   m_SourcePrefab: {fileID: 100100000, guid: c2ba2e454f80aa0499f1a27aafee38da, type: 3}
 --- !u!1 &2184815341979350635 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2653435227075222758, guid: c2ba2e454f80aa0499f1a27aafee38da, type: 3}
   m_PrefabInstance: {fileID: 4215616355834210957}
   m_PrefabAsset: {fileID: 0}
---- !u!58 &-3215949931511500789
-CircleCollider2D:
+--- !u!60 &8780027040279355878
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2184815341979350635}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Density: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -147,5 +147,32 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 1.2821844
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.7957405, y: 0.11400432}
+      - {x: 0.64188343, y: 0.12415331}
+      - {x: 0.61656237, y: 0.40648305}
+      - {x: 0.18017422, y: 0.5944379}
+      - {x: 0.05405955, y: 0.6161955}
+      - {x: -0.3752579, y: 0.44161403}
+      - {x: -0.7610432, y: 0.05922313}
+      - {x: -0.73614323, y: -0.09613419}
+      - {x: -0.61029845, y: -0.38933602}
+      - {x: -0.4572694, y: -0.56544346}
+      - {x: -0.31554288, y: -0.65177155}
+      - {x: -0.035349242, y: -0.71840024}
+      - {x: 0.33378536, y: -0.68596315}
+      - {x: 0.56440175, y: -0.5919402}
+      - {x: 0.68093425, y: -0.4630145}
+      - {x: 0.78841525, y: -0.38547686}
+      - {x: 0.8942043, y: -0.021293938}
+  m_UseDelaunayMesh: 0

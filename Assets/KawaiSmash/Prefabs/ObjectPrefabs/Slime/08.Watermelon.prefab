@@ -15,14 +15,14 @@ PrefabInstance:
     - target: {fileID: 4185073539837422580, guid: cf5258fd28e8f0446b037d6167cc8dc9, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: d096262e225a5c94daedba9857eaaf16, type: 3}
+      objectReference: {fileID: 507121755, guid: a0d4c947989e26345b91caebb3f8f590, type: 3}
     - target: {fileID: 4185073539837422580, guid: cf5258fd28e8f0446b037d6167cc8dc9, type: 3}
       propertyPath: m_Color.b
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4185073539837422580, guid: cf5258fd28e8f0446b037d6167cc8dc9, type: 3}
       propertyPath: m_Color.g
-      value: 0.5986534
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4185073539837422580, guid: cf5258fd28e8f0446b037d6167cc8dc9, type: 3}
       propertyPath: m_Color.r
@@ -106,15 +106,15 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 8656703326593778394, guid: cf5258fd28e8f0446b037d6167cc8dc9, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 512387188883219539}
+      addedObject: {fileID: 5442811171113576964}
   m_SourcePrefab: {fileID: 100100000, guid: cf5258fd28e8f0446b037d6167cc8dc9, type: 3}
 --- !u!1 &6276624570804943778 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8656703326593778394, guid: cf5258fd28e8f0446b037d6167cc8dc9, type: 3}
   m_PrefabInstance: {fileID: 3402967621820332408}
   m_PrefabAsset: {fileID: 0}
---- !u!58 &512387188883219539
-CircleCollider2D:
+--- !u!60 &5442811171113576964
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -145,6 +145,29 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.023165846, y: 0.012943498}
-  serializedVersion: 2
-  m_Radius: 1.259148
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.17992039, y: 0.4201476}
+      - {x: -0.18534702, y: 0.2819959}
+      - {x: -0.40785584, y: -0.046926618}
+      - {x: -0.5029594, y: -0.34893823}
+      - {x: -0.38430175, y: -0.57864106}
+      - {x: -0.07360171, y: -0.71286124}
+      - {x: 0.27678323, y: -0.73778063}
+      - {x: 0.5915479, y: -0.62673455}
+      - {x: 0.67837507, y: -0.42389208}
+      - {x: 0.7437716, y: -0.27695644}
+      - {x: 0.84810853, y: -0.29764205}
+      - {x: 0.95079464, y: -0.16495195}
+      - {x: 0.6369473, y: 0.32398328}
+  m_UseDelaunayMesh: 0
