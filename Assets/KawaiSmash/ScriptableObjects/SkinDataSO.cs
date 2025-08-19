@@ -8,6 +8,7 @@ public class SkinDataSO : ScriptableObject
     [SerializeField] private new string name;
     [SerializeField] private Fruit[] objectprefabs;
     [SerializeField] private Fruit[] spawnablePrefabs;
+    [SerializeField] private int price;
 
     public string GetName()
     {
@@ -25,4 +26,8 @@ public class SkinDataSO : ScriptableObject
         
     }
 
+    public int GetPrice()
+    {
+        return price;
+    }
 }
