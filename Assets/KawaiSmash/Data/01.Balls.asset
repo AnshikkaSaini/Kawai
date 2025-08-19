@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27b89300b8b1e4642956a37f8e0da4c1, type: 3}
   m_Name: 01.Balls
   m_EditorClassIdentifier: 
+  name: Slimes
   objectprefabs:
   - {fileID: 6099937792419963430, guid: 6a06c214a52e5e74e89db3980b01ca86, type: 3}
   - {fileID: 5927351369882375339, guid: 2ef690b840eb1aa4593fad40f8f27113, type: 3}
