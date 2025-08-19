@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using TMPro;
 
 public class ShopManager : MonoBehaviour
 {
@@ -9,14 +10,15 @@ public class ShopManager : MonoBehaviour
     [SerializeField] private SkinButton skinButtonPrefab;
     [SerializeField] private Transform skinButtonParent;
     [SerializeField] private GameObject PurchaseButton;
+    [SerializeField] private TextMeshProUGUI skinLabelText;
+    
     //Data
     [SerializeField] private SkinDataSO[] skinDataSos;
     //Variables
     private int lastSelectedSkin;
     private bool[] unlockedStates;
-
+    //Constants
     private const String SKIN_BUTTON_KEY = "SkinButton_";
-
     private const String LAST_SELECTED_SKIN_KEY = "LastSelectedSkinKey";
     //Actions
     public static Action<SkinDataSO> onSkinSelected;
@@ -25,11 +27,7 @@ public class ShopManager : MonoBehaviour
     void Awake()
     {
         unlockedStates = new bool [skinDataSos.Length];
-      
-    
     }
-
-
     void Start()
     { 
        Init();
@@ -88,11 +86,19 @@ public class ShopManager : MonoBehaviour
         }
 
         ManagePurchaseButtonVisiBility(skinButtonIndex);
+        UpdateSkinLabel( skinButtonIndex);
+
     }
 
     private void ManagePurchaseButtonVisiBility(int skinButtonIndex)
     {
         PurchaseButton.SetActive(!IsSkinUnlocked(skinButtonIndex));
+    }
+
+    private void UpdateSkinLabel(int skinButtonIndex)
+    {
+        skinLabelText.text = skinDataSos[skinButtonIndex].GetName();
+
     }
 
     private bool IsSkinUnlocked(int skinButtonIndex)
