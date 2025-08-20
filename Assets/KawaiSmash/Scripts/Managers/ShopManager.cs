@@ -5,32 +5,30 @@ using UnityEngine.UI;
 
 public class ShopManager : MonoBehaviour
 {
-    // Elements
+    [Header("UI Elements")]
     [SerializeField] private SkinButton skinButtonPrefab;
     [SerializeField] private Transform skinButtonParent;
     [SerializeField] private GameObject PurchaseButton;
     [SerializeField] private TextMeshProUGUI skinLabelText;
-    [SerializeField] private GameObject notEnoughCoins;
+    [SerializeField] private TextMeshProUGUI skinPriceText;
 
-    // Data
+    [Header("Data")]
     [SerializeField] private SkinDataSO[] skinDataSos;
 
-    // Variables
     private int lastSelectedSkin;
     private bool[] unlockedStates;
     private Button purchaseBtn;
 
-    // Constants
     private const string SKIN_BUTTON_KEY = "SkinButton_";
     private const string LAST_SELECTED_SKIN_KEY = "LastSelectedSkinKey";
 
-    // Actions
     public static Action<SkinDataSO> onSkinSelected;
 
     void Awake()
     {
         unlockedStates = new bool[skinDataSos.Length];
         purchaseBtn = PurchaseButton.GetComponent<Button>();
+        purchaseBtn.onClick.AddListener(PurchaseButtonCallback);
     }
 
     void Start()
@@ -38,34 +36,6 @@ public class ShopManager : MonoBehaviour
         Init();
         LoadData();
     }
-
-    public void PurchaseButtonCallback()
-    {
-        int price = skinDataSos[lastSelectedSkin].GetPrice();
-        bool canPurchase = CoinManager.instance.CanPurchase(price);
-
-        if (canPurchase)
-        {
-            // Deduct coins if your CoinManager has a Spend method
-            // CoinManager.instance.SpendCoins(price);
-
-            // Unlock the selected skin
-            unlockedStates[lastSelectedSkin] = true;
-            SaveData();
-
-            // Hide "Not Enough Coins" message
-            notEnoughCoins.SetActive(false);
-
-            // Refresh UI for the unlocked skin
-            SkinButtonClickedCallback(lastSelectedSkin);
-        }
-        else
-        {
-            // Show "Not Enough Coins" message only when trying to buy without enough
-            notEnoughCoins.SetActive(true);
-        }
-    }
-
 
     private void Init()
     {
@@ -79,11 +49,29 @@ public class ShopManager : MonoBehaviour
         }
     }
 
+    public void PurchaseButtonCallback()
+    {
+        int price = skinDataSos[lastSelectedSkin].GetPrice();
+
+        if (CoinManager.instance.CanPurchase(price))
+        {
+            CoinManager.instance.SpendCoins(price);
+
+            unlockedStates[lastSelectedSkin] = true;
+            SaveData();
+
+            SkinButtonClickedCallback(lastSelectedSkin);
+        }
+        else
+        {
+            Debug.LogWarning("Not enough coins to purchase this skin!");
+        }
+    }
+
     private void SkinButtonClickedCallback(int skinButtonIndex, bool shouldSaveLastSkin = true)
     {
         lastSelectedSkin = skinButtonIndex;
 
-        // Update button selection visuals
         for (int i = 0; i < skinButtonParent.childCount; i++)
         {
             SkinButton currentSkinButton = skinButtonParent.GetChild(i).GetComponent<SkinButton>();
@@ -93,45 +81,23 @@ public class ShopManager : MonoBehaviour
                 currentSkinButton.DeSelect();
         }
 
-        // Invoke action if skin is unlocked
         if (IsSkinUnlocked(skinButtonIndex))
             onSkinSelected?.Invoke(skinDataSos[skinButtonIndex]);
 
-        // Save last selected skin
         if (shouldSaveLastSkin)
             SaveLastSelectedSkin();
+        skinPriceText.text = skinDataSos[skinButtonIndex].GetPrice().ToString();
 
-        // Update purchase button and label
-        ManagePurchaseButtonVisibility(skinButtonIndex);
         UpdateSkinLabel(skinButtonIndex);
+        UpdatePurchaseButton(skinButtonIndex);
     }
 
-    private void ManagePurchaseButtonVisibility(int skinButtonIndex)
+    private void UpdatePurchaseButton(int skinButtonIndex)
     {
-        bool isUnlocked = IsSkinUnlocked(skinButtonIndex);
+        bool unlocked = IsSkinUnlocked(skinButtonIndex);
 
-        if (isUnlocked)
-        {
-            // Keep the button visible but disabled
-            PurchaseButton.SetActive(true);
-            purchaseBtn.interactable = false;
-
-            // Hide the "Not Enough Coins" message
-            notEnoughCoins.SetActive(false);
-        }
-        else
-        {
-            PurchaseButton.SetActive(true);
-
-            bool canPurchase = CoinManager.instance.CanPurchase(skinDataSos[skinButtonIndex].GetPrice());
-            purchaseBtn.interactable = canPurchase;
-
-            // Don’t show "Not Enough Coins" here — only on button click
-            notEnoughCoins.SetActive(false);
-        }
+        purchaseBtn.interactable = !unlocked && CoinManager.instance.CanPurchase(skinDataSos[skinButtonIndex].GetPrice());
     }
-
-
 
     private void UpdateSkinLabel(int skinButtonIndex)
     {
@@ -148,7 +114,7 @@ public class ShopManager : MonoBehaviour
         for (int i = 0; i < unlockedStates.Length; i++)
         {
             int unlockedValue = PlayerPrefs.GetInt(SKIN_BUTTON_KEY + i, 0);
-            if (i == 0) unlockedValue = 1; // Default first skin unlocked
+            if (i == 0) unlockedValue = 1; // First skin unlocked by default
             unlockedStates[i] = unlockedValue == 1;
         }
 

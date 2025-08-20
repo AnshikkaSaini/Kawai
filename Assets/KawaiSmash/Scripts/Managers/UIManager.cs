@@ -70,6 +70,7 @@ public class UIManager : MonoBehaviour
     }
 
     public void GetShopButtonCallback() => shopPanel.SetActive(true);
-    public void GetCloseShopPAnel() => shopPanel.SetActive(false);
+    public void GetCloseShopPanel() => shopPanel.SetActive(false);
+    public void GoBacktoMenu() => menuPanel.SetActive(true);
 }
 
