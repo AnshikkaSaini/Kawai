@@ -64,7 +64,7 @@ public class FruitManager : MonoBehaviour
         
     void Update()
     {
-        if (!GameManager.GameManagerInstance.IsGameState())
+        if (!GameManager.Instance.IsGameState())
         {
             return;
         }
