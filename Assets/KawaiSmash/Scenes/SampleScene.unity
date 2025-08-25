@@ -3292,7 +3292,7 @@ MonoBehaviour:
   skinData: {fileID: 11400000, guid: 9247708cdd722054bb5533f92ee94ed0, type: 2}
   fruitIndicatorLine: {fileID: 1131331613}
   fruitsParent: {fileID: 1814691427}
-  spawnDelay: 0.1
+  spawnDelay: 0.4
   spawnPathYPosition: 3
   enableGizmos: 1
 --- !u!114 &905880333
