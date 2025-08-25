@@ -71,7 +71,6 @@ public class GameManager : MonoBehaviour
     public void PlayButtonCallback()
     {
         GameManager.GameManagerInstance.SetGameState();
-        SetGame();
     }
 
     public void NextButtonCallback()
