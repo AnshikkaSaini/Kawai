@@ -44,12 +44,14 @@ public class UIManager : MonoBehaviour
         gamePanel.SetActive(false);
         gameOverPanel.SetActive(false);
         settingsPanel.SetActive(false);
+        Debug.LogError("Menu State");
     }
     private void SetGame()
     {
         menuPanel.SetActive(false);
         gamePanel.SetActive(true);
         gameOverPanel.SetActive(false);
+        Debug.LogError("Game State");
         
     }
     private void SetGameOver()
@@ -57,6 +59,7 @@ public class UIManager : MonoBehaviour
         menuPanel.SetActive(false);
         gamePanel.SetActive(false);
         gameOverPanel.SetActive(true);
+        Debug.LogError("Game Over State");
     }
 
     public void SettingsButtonCallback()
@@ -70,6 +73,7 @@ public class UIManager : MonoBehaviour
     }
 
     public void GetShopButtonCallback() => shopPanel.SetActive(true);
-    public void GetCloseShopPAnel() => shopPanel.SetActive(false);
+    public void GetCloseShopPanel() => shopPanel.SetActive(false);
+    public void GoBacktoMenu() =>SetMenu();
 }
 
