@@ -43,8 +43,8 @@ public class ScoreManager : MonoBehaviour
     {
         switch (gameState)
         {
-            
-            case GameState.GameOver: 
+            case GameState.GameOver:
+            case GameState.Menu:
                 CalculateBestScore();
                 break;
         }
@@ -73,6 +73,7 @@ public class ScoreManager : MonoBehaviour
     {
         if (_score > _bestScore)
             _bestScore = _score;
+        UpdateBestScoretext();
         SaveData();
     }
 

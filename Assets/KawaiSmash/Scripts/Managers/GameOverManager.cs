@@ -104,7 +104,7 @@ public class GameOverManager : MonoBehaviour
     {
         Debug.LogError("Game Over");
         isGameOver = true;
-        GameManager.GameManagerInstance.SetGameOverState();
+        GameManager.Instance.SetGameOverState();
     }
 
 

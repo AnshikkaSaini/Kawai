@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
-    public static GameManager GameManagerInstance;
+    public static GameManager Instance;
     [Header("Settings")] 
     private GameState gameState;
 
@@ -13,9 +13,9 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        if (GameManagerInstance == null)
+        if (Instance == null)
         {
-            GameManagerInstance = this;
+            Instance = this;
         }
         else
         {
@@ -31,46 +31,41 @@ public class GameManager : MonoBehaviour
     private void SetMenu()
     {
     
-        SetGameState(GameState.Menu);
+        SetState(GameState.Menu);
     }
     private void SetGame()
     {
-        
-        SetGameState(GameState.Game);
+        SetState(GameState.Game);
     }
     private void SetGameOver()
     {
         
-        SetGameState(GameState.GameOver);
+        SetState(GameState.GameOver);
     }
+    
 
-    private void SetGameState(GameState gameState)
+    private void SetState(GameState gameState)
     {
         this.gameState = gameState;
         onGameStatedChanged?.Invoke(gameState);
     }
-
-    public GameState GetGameState()
-    {
-        return gameState;
-    }
-
+    
     public void SetGameState()
     {
         SetGame();
     }
 
-    public bool IsGameState()
-    {
-        return gameState == GameState.Game;
-    }
     public void SetGameOverState()
     {
         SetGameOver();
     }
+    public void SetMenuState()
+    {
+        SetMenu();
+    }
     public void PlayButtonCallback()
     {
-        GameManager.GameManagerInstance.SetGameState();
+        GameManager.Instance.SetGameState();
     }
 
     public void NextButtonCallback()
@@ -78,4 +73,9 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(0);
 
     }
+    public bool IsGameState()
+    {
+        return gameState == GameState.Game;
+    }
+
 }

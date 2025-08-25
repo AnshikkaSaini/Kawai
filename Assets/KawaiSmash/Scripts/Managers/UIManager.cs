@@ -69,6 +69,10 @@ public class UIManager : MonoBehaviour
 
     public void GetShopButtonCallback() => shopPanel.SetActive(true);
     public void GetCloseShopPanel() => shopPanel.SetActive(false);
-    public void GoBacktoMenu() =>SetMenu();
+
+    public void GoBacktoMenu()
+    {
+       GameManager.Instance.SetMenuState();
+    }
 }
 
