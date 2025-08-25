@@ -1,18 +1,11 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
-
-
-//using Random = System.Random;
 
 public class FruitManager : MonoBehaviour
 {
+
     #region Variables and References
-
-
     [Header("Elements")] //Header for the Inspector
     [SerializeField] private SkinDataSO skinData;
     [SerializeField] private LineRenderer fruitIndicatorLine;
@@ -34,14 +27,9 @@ public class FruitManager : MonoBehaviour
     [SerializeField] private bool enableGizmos;
 
     [Header("Action")] public static Action onNextFruitIndexSet;
-    
-    
-    
-    
     #endregion
 
     #region Unity Callbacks
-
     private void Awake()
     {
         MergeManager.OnMergeProcessed += MergeProcessCallback;
@@ -60,8 +48,7 @@ public class FruitManager : MonoBehaviour
         canSpawnNewFruits = true;
         HideLine();
     }
-       
-        
+    
     void Update()
     {
         if (!GameManager.Instance.IsGameState())
@@ -249,9 +236,6 @@ public class FruitManager : MonoBehaviour
        Fruit fruitInstance =  Instantiate(fruit, spawnPosition,Quaternion.identity,fruitsParent);
         fruitInstance.EnablePhysics();
     }
-    
-
-
     
     #region Editor Gizmos
 

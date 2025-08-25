@@ -1,7 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using System;
 
 public class GameOverManager : MonoBehaviour
 {
@@ -19,7 +16,6 @@ public class GameOverManager : MonoBehaviour
     
     void Update()
     {
-
         if (!isGameOver)
         {
             ManageGameOver();
@@ -44,8 +40,7 @@ public class GameOverManager : MonoBehaviour
     private void ManageTimerOn()
     {
         timer += Time.deltaTime;
- 
-
+        
         if (!IsFruitAboveLine())
         {
             StopTimer();
@@ -67,7 +62,9 @@ public class GameOverManager : MonoBehaviour
             {
                 continue;
             }
+            
             Rigidbody2D rb = fruitsParent.GetChild(i).GetComponent<Rigidbody2D>();
+            
             if (rb != null && rb.velocity.magnitude > 0.05f)
                 continue; // still moving, ignore
 
@@ -106,7 +103,4 @@ public class GameOverManager : MonoBehaviour
         isGameOver = true;
         GameManager.Instance.SetGameOverState();
     }
-
-
-   
 }

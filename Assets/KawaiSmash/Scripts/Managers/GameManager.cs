@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
@@ -9,7 +7,7 @@ public class GameManager : MonoBehaviour
     [Header("Settings")] 
     private GameState gameState;
 
-    [Header("Actions")] public static Action<GameState> onGameStatedChanged;
+    public static Action<GameState> onGameStatedChanged;
 
     private void Awake()
     {
@@ -30,7 +28,6 @@ public class GameManager : MonoBehaviour
     
     private void SetMenu()
     {
-    
         SetState(GameState.Menu);
     }
     private void SetGame()
@@ -39,11 +36,9 @@ public class GameManager : MonoBehaviour
     }
     private void SetGameOver()
     {
-        
         SetState(GameState.GameOver);
     }
     
-
     private void SetState(GameState gameState)
     {
         this.gameState = gameState;
@@ -65,17 +60,16 @@ public class GameManager : MonoBehaviour
     }
     public void PlayButtonCallback()
     {
-        GameManager.Instance.SetGameState();
+        SetGameState();
     }
 
     public void ResetGame()
     {
         SceneManager.LoadScene(0);
-
     }
+    
     public bool IsGameState()
     {
         return gameState == GameState.Game;
     }
-
 }
