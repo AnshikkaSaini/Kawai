@@ -68,7 +68,7 @@ public class GameManager : MonoBehaviour
         GameManager.Instance.SetGameState();
     }
 
-    public void NextButtonCallback()
+    public void ResetGame()
     {
         SceneManager.LoadScene(0);
 
