@@ -11,6 +11,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject gameOverPanel;
     [SerializeField] private GameObject settingsPanel;
     [SerializeField] private GameObject shopPanel;
+    
+    [SerializeField] private ScoreManager scoreManager;
 
     private void Awake()
     {
@@ -72,7 +74,7 @@ public class UIManager : MonoBehaviour
 
     public void GoBacktoMenu()
     {
-       GameManager.Instance.ResetGame();
+        scoreManager.CalculateBestScore();
+        GameManager.Instance.ResetGame();
     }
 }
-
