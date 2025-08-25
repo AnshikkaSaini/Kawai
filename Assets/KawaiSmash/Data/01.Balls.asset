@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27b89300b8b1e4642956a37f8e0da4c1, type: 3}
+  m_Name: 01.Balls
+  m_EditorClassIdentifier: 
+  name: Slimes
+  objectprefabs:
+  - {fileID: 6099937792419963430, guid: 6a06c214a52e5e74e89db3980b01ca86, type: 3}
+  - {fileID: 5927351369882375339, guid: 2ef690b840eb1aa4593fad40f8f27113, type: 3}
+  - {fileID: 8576419791038460317, guid: 2e95c93df236c3942b8e075f6be4c2b3, type: 3}
+  - {fileID: 9115879785146381923, guid: 57a096c6e1187d94abe7c82b4938b796, type: 3}
+  - {fileID: 8566649745294550119, guid: 634b0c569f49b9a41b75786e1106739a, type: 3}
+  - {fileID: 1746018833215101004, guid: c0cc2eee51873c246b13cd151632f06a, type: 3}
+  - {fileID: 2987378705033054863, guid: 841aa1bfe0ba6964f93aafd970066f70, type: 3}
+  - {fileID: 1438246589823770626, guid: 86e460c7c1ee2694fa9277117bde2667, type: 3}
+  - {fileID: 6538281730167369163, guid: d197013b11f4138449f04481558e10be, type: 3}
+  spawnablePrefabs:
+  - {fileID: 6099937792419963430, guid: 6a06c214a52e5e74e89db3980b01ca86, type: 3}
+  - {fileID: 5927351369882375339, guid: 2ef690b840eb1aa4593fad40f8f27113, type: 3}
+  - {fileID: 8576419791038460317, guid: 2e95c93df236c3942b8e075f6be4c2b3, type: 3}
+  - {fileID: 9115879785146381923, guid: 57a096c6e1187d94abe7c82b4938b796, type: 3}

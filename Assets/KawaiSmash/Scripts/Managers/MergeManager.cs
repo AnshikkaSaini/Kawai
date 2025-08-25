@@ -1,0 +1,68 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using System;
+
+public class MergeManager : MonoBehaviour
+{
+    [Header("Action")] 
+    public static Action<FruitType, Vector2> OnMergeProcessed;
+    
+    [Header("Settings")]
+    private Fruit lastSender;
+    private bool gameStarted = false;
+
+    
+    void Awake()
+    {
+        Fruit.onCollisionWithFruit += CollisionBetweenFruitsCallback;
+    }
+    void OnDestroy()
+    {
+        Fruit.onCollisionWithFruit -= CollisionBetweenFruitsCallback;
+    }
+    private void Start()
+    {
+        StartCoroutine(EnableMergingAfterDelay());
+    }
+
+    private IEnumerator EnableMergingAfterDelay()
+    {
+        yield return new WaitForSeconds(0.5f); // wait half a second
+        gameStarted = true;
+    }
+    
+    private void CollisionBetweenFruitsCallback(Fruit sender, Fruit otherFruit)
+    {
+        if (!gameStarted) return;
+        if (lastSender != null)
+            return;
+        lastSender = sender;
+        ProcessMerge(sender, otherFruit);
+        Debug.Log("Collision Dectected" + sender.name);
+        
+        
+    }
+    
+    private void ProcessMerge( Fruit sender, Fruit otherFruit)
+    {
+        FruitType MergeFruitType = sender.GetFruitType();
+        MergeFruitType += 1;
+        
+        Vector2 fruitSpawnPos = 
+            (sender.transform.position + otherFruit.transform.position) / 2;
+
+        sender.Merge();
+        otherFruit.Merge();
+
+        StartCoroutine(ResetLastSenderCoroutine());
+        
+        OnMergeProcessed?.Invoke(MergeFruitType, fruitSpawnPos);
+    }
+
+    IEnumerator ResetLastSenderCoroutine()
+    {
+        yield return new WaitForEndOfFrame();
+        lastSender = null;
+    }
+}
