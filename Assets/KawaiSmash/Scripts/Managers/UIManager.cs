@@ -44,24 +44,19 @@ public class UIManager : MonoBehaviour
         gamePanel.SetActive(false);
         gameOverPanel.SetActive(false);
         settingsPanel.SetActive(false);
-        Debug.LogError("Menu State");
     }
     private void SetGame()
     {
         menuPanel.SetActive(false);
         gamePanel.SetActive(true);
         gameOverPanel.SetActive(false);
-        Debug.LogError("Game State");
-        
     }
     private void SetGameOver()
     {
         menuPanel.SetActive(false);
         gamePanel.SetActive(false);
         gameOverPanel.SetActive(true);
-        Debug.LogError("Game Over State");
     }
-
     public void SettingsButtonCallback()
     {
         settingsPanel.SetActive(true);
