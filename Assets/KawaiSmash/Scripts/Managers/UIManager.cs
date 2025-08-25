@@ -72,7 +72,7 @@ public class UIManager : MonoBehaviour
 
     public void GoBacktoMenu()
     {
-       GameManager.Instance.SetMenuState();
+       GameManager.Instance.ResetGame();
     }
 }
 
