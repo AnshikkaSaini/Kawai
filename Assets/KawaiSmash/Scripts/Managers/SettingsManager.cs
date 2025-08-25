@@ -27,8 +27,7 @@ public class SettingsManager : MonoBehaviour
     {
         LoadData();
     }
-    //HelloWorld@123
-    //
+  
 
     private IEnumerator Start()
     {
@@ -56,7 +55,7 @@ public class SettingsManager : MonoBehaviour
     public void ResetProgressYes()
     {
         PlayerPrefs.DeleteAll();
-        SceneManager.LoadScene(0);
+        GameManager.Instance.ResetGame();
     }
 
     public void ResetProgressNo()

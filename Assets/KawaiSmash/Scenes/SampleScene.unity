@@ -3393,7 +3393,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 669194598}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: NextButtonCallback
+        m_MethodName: ResetGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
